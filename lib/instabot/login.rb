@@ -13,7 +13,7 @@ module Login
     login_page         = @agent.get('https://www.instagram.com/accounts/login/?force_classic_login')
     page_form          = login_page.forms.last
     page_form.username = username
-    page_form.password = password
+    page_form.enc_password = password
     page               = page_form.submit
 
     if page.code == '200' && page.uri.to_s != 'https://www.instagram.com/accounts/login/?force_classic_login' && !page.uri.to_s.include?('challenge')
